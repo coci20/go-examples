@@ -86,4 +86,30 @@ func main() {
 	for _,values := range numsSlice2 {
 		fmt.Println(values)
 	} //without _ it will print the indices
+	fmt.Println("************printing the array elements************")
+	fmt.Println(nums[:5])
+	fmt.Println(players[1:])
+	fmt.Println("********making slices and copying******************")
+	numSlice := []int {5,4,3,2,1}
+	fmt.Println(numSlice[0:])
+	fmt.Println("make a slice, give 0 to first 8, max length = 10")
+	numSlice2 := make([]int, 8, 10)
+	fmt.Println(numSlice2[0:])
+	copy(numSlice2, numSlice)
+	fmt.Println(numSlice2[0:])
+	fmt.Println("*******appending to a slice****************")
+	numSlice2 = append(numSlice2,-1,-2,-3)//increases the size of slice by 3 and appends new items at the end, should output [5 4 3 2 1 0 0 0 -1 -2 -3]
+	fmt.Println(numSlice2[0:])
+	fmt.Println("**************using Maps********************")
+	captains := make(map[string] string)
+	captains["india"] = "kohli"
+	captains["aus"] = "smith"
+	captains["eng"] = "root"
+	captains["nz"] = "kane"
+	fmt.Println(captains)
+	fmt.Println("for aus captain is", captains["aus"])
+	fmt.Println("length of map is", len(captains))
+	delete(captains, "aus")
+	fmt.Println("key for aus deleted, length of map =", len(captains))
+	fmt.Println(captains)
 }
