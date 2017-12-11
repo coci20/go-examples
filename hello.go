@@ -118,6 +118,29 @@ func main() {
 	fmt.Println("*******returning multiple values**************")
 	mySum, myProduct := sumProduct(numSlice)
 	fmt.Println("mySum = ",mySum,"myProduct =",myProduct)
+	fmt.Println("*******using variable arguments****************")
+	mySum, myProduct = sumProductVar(2,4,6,8,10)
+	fmt.Println("mySum = ",mySum,"myProduct = ",myProduct)
+	fmt.Println("using function inside a function, example - square(X)")
+	fmt.Println("***************closures!***************************")
+	squareThis := 4
+	makeSquare := func() int {//using format function-name := func()
+		squareThis *= squareThis
+		return squareThis
+	}
+	fmt.Println("square of",squareThis, makeSquare())
+	fmt.Println("square of",squareThis, makeSquare())
+}
+//function return two values with variable args
+func sumProductVar(args ... int) (int, int) {
+	x := 0
+	p := 1
+	fmt.Println(args)
+	for _,vals := range args {
+		x += vals
+		p *= vals
+	}
+	return x, p
 }
 //function returning the sum of an array
 func addThemUp(nums []int) int {
