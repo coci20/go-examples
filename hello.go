@@ -112,4 +112,29 @@ func main() {
 	delete(captains, "aus")
 	fmt.Println("key for aus deleted, length of map =", len(captains))
 	fmt.Println(captains)
+	fmt.Println("************using function addThemUp for nums******")
+	fmt.Println(numSlice2[0:])
+	fmt.Println(addThemUp(numSlice2))
+	fmt.Println("*******returning multiple values**************")
+	mySum, myProduct := sumProduct(numSlice)
+	fmt.Println("mySum = ",mySum,"myProduct =",myProduct)
+}
+//function returning the sum of an array
+func addThemUp(nums []int) int {
+	x := 0
+	for _,values := range nums {
+		x += values
+	}
+	return x
+}
+//function returning two values, one for sum, other for product
+func sumProduct(nums []int) (int, int) {
+	fmt.Println(nums)
+	x := 0
+	p := 1
+	for _, values := range nums {
+		x += values
+		p *= values
+	}
+	return x, p
 }
