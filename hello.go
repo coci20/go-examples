@@ -74,6 +74,8 @@ func main() {
 		}
 		x++
 	}
+	fmt.Println("**********using defer************************")
+	defer lastFunc()
 	fmt.Println("************using arrays********************")
 	players := [5]string {"fav players","sachin","dravid","dhoni","kohli"}
 	for _, value := range players {
@@ -130,6 +132,47 @@ func main() {
 	}
 	fmt.Println("square of",squareThis, makeSquare())
 	fmt.Println("square of",squareThis, makeSquare())
+	fmt.Println("*********using recursive calls******************")
+	fmt.Println("factorial for 5 =",getFactorial(5))
+	fmt.Println("fibonacci for 8 =",getFib(8))
+	fmt.Println("********exception handling using defer************")
+	safeDiv(3,0)
+	safeDiv(10,3)
+}
+//using defer to do cleanup
+func lastFunc() {
+	fmt.Println("after main() ends this is called, invoked before arrays")
+}
+//performing a safe division
+func safeDiv(num1, num2 int) {
+	defer func() {
+		fmt.Println("let the program continue")
+		recover()
+	}()
+	//panic("PANIC")
+	fmt.Println("dividing",num1," by",num2)
+	if num2 == 0 {
+		panic("PANIC")
+	}
+	soln := num1 / num2
+	fmt.Println(soln)
+}
+//recursive call to get the factorial of n
+func getFactorial(num int) int {
+	if num == 0 {
+		return 1
+	}
+	return num * getFactorial(num - 1)
+}
+//recursive call to get fibonacci of n
+func getFib(num int) int {
+	if num == 0 {
+		return 0
+	} else if num == 1 {
+		return 1
+	} else {
+		return getFib(num - 1) + getFib(num - 2)
+	}
 }
 //function return two values with variable args
 func sumProductVar(args ... int) (int, int) {
